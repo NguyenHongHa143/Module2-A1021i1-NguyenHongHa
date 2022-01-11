@@ -3,7 +3,7 @@ package b3_mang_va_phuong_thuc.bai_tap;
 import java.util.Scanner;
 
 public class ung_dung_dem_so_luong_SV_thi_do {
-    static int dem_SV_dau(float a[]){
+    public static int dem_SV_dau(float a[]){
         int count = 0;
         for (int i=0;i<a.length;i++){
             if (a[i]>=5.0)
