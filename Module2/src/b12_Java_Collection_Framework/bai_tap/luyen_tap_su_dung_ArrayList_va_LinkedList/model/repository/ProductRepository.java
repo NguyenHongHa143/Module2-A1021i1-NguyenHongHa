@@ -1,6 +1,6 @@
 package b12_Java_Collection_Framework.bai_tap.luyen_tap_su_dung_ArrayList_va_LinkedList.model.repository;
 
-import demo.model.model.Product;
+import b12_Java_Collection_Framework.bai_tap.luyen_tap_su_dung_ArrayList_va_LinkedList.model.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;

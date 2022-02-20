@@ -1,7 +1,8 @@
 package b12_Java_Collection_Framework.bai_tap.luyen_tap_su_dung_ArrayList_va_LinkedList.controller;
 
-import demo.model.model.Product;
-import demo.model.service.ProductService;
+import b12_Java_Collection_Framework.bai_tap.luyen_tap_su_dung_ArrayList_va_LinkedList.model.model.Product;
+import b12_Java_Collection_Framework.bai_tap.luyen_tap_su_dung_ArrayList_va_LinkedList.model.service.ProductService;
+
 
 import java.util.List;
 import java.util.Scanner;

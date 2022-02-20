@@ -1,7 +1,8 @@
 package b12_Java_Collection_Framework.bai_tap.luyen_tap_su_dung_ArrayList_va_LinkedList.model.service;
 
-import demo.model.model.Product;
-import demo.model.repository.ProductRepository;
+import b12_Java_Collection_Framework.bai_tap.luyen_tap_su_dung_ArrayList_va_LinkedList.model.model.Product;
+import b12_Java_Collection_Framework.bai_tap.luyen_tap_su_dung_ArrayList_va_LinkedList.model.repository.ProductRepository;
+
 
 import java.util.*;
 import java.util.stream.Collectors;

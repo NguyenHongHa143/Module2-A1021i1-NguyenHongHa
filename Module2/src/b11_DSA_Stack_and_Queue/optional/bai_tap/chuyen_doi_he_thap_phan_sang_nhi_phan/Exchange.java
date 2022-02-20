@@ -1,6 +1,6 @@
 package b11_DSA_Stack_and_Queue.optional.bai_tap.chuyen_doi_he_thap_phan_sang_nhi_phan;
 
-import sun.misc.Queue;
+import java.util.Queue;
 
 import java.util.ArrayList;
 import java.util.List;
