@@ -1,0 +1,60 @@
+create table PHIEUXUAT(
+SOPX int primary key,
+NGAYXUAT datetime not null
+);
+
+create table VATTU(
+MAVTU int primary key,
+TENVT nvarchar(50) not null
+);
+
+create table PHIEUNHAP(
+SOPN int PRIMARY KEY,
+NGAYNHAP datetime NOT NULL
+);
+
+create table CTXUAT(
+SOPX int,
+MAVTU int,
+DGXUAT double,
+SLXUAT int,
+primary key (SOPX,MAVTU),
+constraint frk_SOPX FOREIGN KEY (SOPX) REFERENCES PHIEUXUAT(SOPX),
+constraint frk_MAVTU FOREIGN KEY (MAVTU) REFERENCES VATTU(MAVTU)
+);
+
+create table CTNHAP(
+SOPN int,
+MAVTU int,
+DGNHAP double,
+SLNHAP int,
+primary key (SOPN,MAVTU),
+constraint frk_SOPN FOREIGN KEY (SOPN) REFERENCES PHIEUNHAP(SOPN),
+constraint frk1_MAVTU FOREIGN KEY (MAVTU) REFERENCES VATTU(MAVTU)
+);
+
+create table DONDH (
+SODH int primary key,
+NGAYDH datetime
+);
+
+create table NHACC(
+MANCC INT PRIMARY KEY,
+TENNCC NVARCHAR(50),
+DIACHI NVARCHAR(50),
+SDT VARCHAR(10)
+);
+
+create table CHITIETDONDH(
+MAVTU INT,
+SODH INT,
+constraint frk_SODH FOREIGN KEY (SODH) REFERENCES DONDH(SODH),
+constraint frk_MAVTU2 FOREIGN KEY (MAVTU) REFERENCES VATTU(MAVTU)
+); 
+
+CREATE TABLE CUNGCAP(
+SODH INT,
+MANCC INT,
+constraint frk_SODH1 FOREIGN KEY (SODH) REFERENCES DONDH(SODH),
+constraint frk_MANCC FOREIGN KEY (MANCC) REFERENCES NHACC(MANCC)
+);
