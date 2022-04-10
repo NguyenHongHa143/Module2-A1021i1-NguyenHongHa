@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/icon/themify-icons/themify-icons.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            position: fixed;
+            width: 100%;
+            height: 58px;
+            background-color: #1c1e21;
+        }
+        header .icon_fb{
+            position: relative;
+            left: 10px;
+            font-size: 28px;
+            padding: 10px 10px;
+            line-height: 58px;
+            color: aliceblue;
+            background-color: #3b5998;
+            border-radius: 50%;
+            cursor: pointer;
+            top: -9px;
+        }
+        .search{
+            position: relative;
+            top: -15px;
+            left: 30px;
+            display: inline-block;
+            background-color: #606770;
+            padding: 7px 20px 7px 15px;
+            border-radius: 20px;
+        }
+        .search input{
+            background-color: transparent;
+            border: 0px solid #606770;
+            font-size: 20px;
+            outline:none;
+        }
+        .search .icon_search{
+            font-size: 16px;
+            cursor: pointer;
+            color: aliceblue;
+        }
+        .menu{
+            position: relative;
+            display: inline-block;
+            left: 150px;
+        }
+        .menu li{
+            float: left;
+            list-style-type: none;
+            padding: 5px 30px 9px;
+            margin-top: 5px;
+            margin-right: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            /* line-height: 50px; */
+        }
+        .menu li:hover{
+            background-color: #606770;
+        }
+        .menu li i{
+            font-size: 30px;
+            color: aliceblue;
+        }
+        .information img {
+            width: 30px;
+            height: 100%;
+            position: relative;
+            top: 5px;
+            border-radius: 50%;
+        }
+        .information{
+            position: relative;
+            top: -4px;
+            left: 260px;
+            display: inline-block;
+        }
+        .information li{
+            list-style-type: none;
+            float: left;
+            padding: 10px 15px;
+            margin-right: 10px;
+            background-color: #606770;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+        .information li i{
+            /* color: aliceblue; */
+            font-size: 16px;
+            color: aliceblue;
+        }
+        .user p{
+            display: inline;
+            color: aliceblue;
+            font-size: 16px;
+            position: relative;
+            top: -5px;
+            /* line-height: 58px; */
+        }
+        .information .user{
+            position: relative;
+            border-radius: 20px;
+            /* margin-top: 5px; */
+            padding: 1px 6px 4px 1px;
+            cursor: pointer;
+            background-color: #1c1e21 ;
+        }
+        .information .user:hover{
+            background-color: #606770;
+        }
+        .sidebar{
+            width: 20%;
+            height: 1000px;
+            background-color: yellow;
+            float: left;
+            position: relative;
+            top: 58px;
+        }
+        .content{
+            position: relative;
+            top: 58px;
+            width: 60%;
+            height: 1000px;
+            background-color: aqua;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="icon_fb ti-facebook"></i>
+        <div class="search">
+            <i class="icon_search ti-search"></i>
+            <input type="text" placeholder="Tìm kiếm trên Facebook" >
+        </div>
+        <div class="menu">
+            <ul>
+                <li>
+                    <i class="ti-home"></i>
+                </li>
+                <li>
+                    <i class="ti-video-camera"></i>
+                </li>
+                <li>
+                    <i class="ti-user"></i>
+                </li>
+                <li>
+                    <i class="ti-game"></i>
+                </li>
+            </ul>
+        </div>
+        <div class="information">
+            <ul>
+                <li class="user">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnUk4MqcBYYrpTQMeobc9zxwna2bqfPIgViQ&usqp=CAU" alt="Ảnh đại diện" sizes="30px">
+                    <p>Nguyễn</p>
+                </li>
+                <li>
+                    <i class="ti-plus"></i>
+                </li>
+                <li>
+                    <i class="ti-comment-alt"></i>
+                </li>
+                <li>
+                    <i class="ti-bell"></i>
+                </li>
+                <li>
+                    <i class="ti-angle-double-down"></i>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="sidebar"></div>
+    <div class="content"></div>
+    <div class="sidebar"></div>
+</body>
+</html>

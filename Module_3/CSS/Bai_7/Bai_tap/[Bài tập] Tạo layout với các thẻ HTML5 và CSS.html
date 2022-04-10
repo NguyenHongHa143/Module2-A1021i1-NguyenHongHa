@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color:#333;
+            height: 76px;
+            position: fixed ;
+            width: 100%;
+            box-shadow: 1px 1px 1px #AAA;
+            display: block;
+        }
+        header h1 {
+            
+            text-align: center;
+            font-size: 56px;
+            font-family: 'Times New Roman', Times, serif;
+            color: aliceblue;
+        }
+        nav {
+            position: relative;
+            top: 76px;
+            width: 100%;
+            height: 46px;
+        }
+        nav ul li {
+            float: left;
+            padding: 0 24px;
+            line-height: 46px;
+            list-style-type: none;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        nav ul li:hover{
+            background-color: #333;
+            color: aliceblue;
+        }
+        section{
+            position: relative;
+            top: 75px;
+            width: 100%;
+            text-align: center;
+            background-color: rgb(126, 124, 124);
+            height: 600px;
+        }
+        article{
+            width: 90%;
+            height: 40%;
+        }
+        .article_st{
+            background-color: white;
+            padding: 10px 0 ;
+            margin-top: 20px;
+            position: relative;
+            left: 5%;
+
+        }
+        .article_st p{
+            font-size: 30px;
+        }
+        footer{
+            position: relative;
+            top: 80px;
+            width: 100%;
+            height: 46px;
+            background-color: #333;
+        }
+        footer p {
+            font-size: 20px;
+            color: aliceblue;
+            align-items: center;
+            line-height: 46px;
+            padding: 0 10px;
+        }
+        h2{
+            padding-top: 20px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Monday Times</h1>
+    </header>
+    <nav>
+        <ul>
+          <li>News</li>
+          <li>Sports</li>
+          <li>Weather</li>
+        </ul>
+    </nav>
+    <section>
+        <h2>News Section</h2>
+        <article class="article_st">
+            <h2>News Article</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum est nibh, et consectetur tortor feugiat at.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum est nibh, et consectetur tortor feugiat at.</p>
+          </article>
+          <article class="article_st">
+            <h2>News Article</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum est nibh, et consectetur tortor feugiat at.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum est nibh, et consectetur tortor feugiat at.</p>
+          </article>
+    </section>
+    <footer>
+        <p>&copy; 2014 Monday Times. All rights reserved.</p>
+    </footer>
+</body>
+</html>

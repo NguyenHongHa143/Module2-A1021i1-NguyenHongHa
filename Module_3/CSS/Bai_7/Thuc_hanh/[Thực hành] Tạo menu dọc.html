@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #main{
+            width: 1000px;
+            height: 400px;
+            background-color: aqua;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        #nav ul{
+            display: block;
+        }
+
+    
+        #nav li {
+            list-style-type: none;
+            position: relative;
+            line-height: 30px;
+            background-color: black;
+            padding: 0 20px;
+            width: 200px;
+        }
+        #nav li:hover > a{
+           color: black;
+        }
+        #nav li:hover{
+            background-color: aliceblue;
+        }
+        #nav li a{
+            text-decoration: none;
+            color: aliceblue;
+            font-size: 16px;
+        }
+        #nav li .sup_nav_1{
+            position: absolute;
+            top: 0;
+            left: 200px;
+            display: none;
+        }
+        #nav li:hover .sup_nav_1{
+            display: block;
+        }
+        #nav li .sup_nav_2{
+            position: absolute;
+            width: 300px;
+            top: 0;
+            left:200px;
+            display: none;
+        }
+        #nav li:hover .sup_nav_2{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+    <div >
+        <h3>ACCP i10</h3>
+    </div>
+    <div id="nav">
+        <ul >
+            <li >
+                <a href="#">Sem 1</a>
+              
+                <ul class="sup_nav_1" >
+                    <li><a href="#" >Computing Fundametal</a></li>
+                    <li><a href="#" >C Programming</a></li>
+                    <li><a href="#" >Building Dynamic Website</a></li>
+                    <li><a href="#" >MS Transact-SQL</a></li>
+                    <li><a href="#" >Project</a></li>
+                </ul>    
+            </li>
+            <li>
+                <a href="#">Sem 2</a>
+                <ul class="sup_nav_2">
+                    <li><a href="#">Cloud Computing</a></li>
+                    <li><a href="#">APJ - I</a></li>
+                    <li><a href="#">APJ - II</a></li>
+                    <li><a href="#">APJ - III</a></li>
+                    <li><a href="#">eProject</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Sem 3</a></li>
+            <li><a href="#">Sem 4</a></li>
+            
+        </ul>
+    </div>
+    </div>
+</body>
+</html>
