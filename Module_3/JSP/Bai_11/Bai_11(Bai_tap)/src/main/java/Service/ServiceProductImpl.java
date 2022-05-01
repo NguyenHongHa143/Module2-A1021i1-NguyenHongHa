@@ -1,6 +1,7 @@
 package Service;
 
 import Model.Product;
+import Repository.Repository2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ServiceProductImpl implements ServiceProduct{
+    Repository2 repository2 = new Repository2();
     private static Map<Integer,Product> productMap;
     static {
         productMap = new HashMap<>();
@@ -29,7 +31,7 @@ public class ServiceProductImpl implements ServiceProduct{
 
     @Override
     public List<Product> findAll() {
-        return new ArrayList<Product>(productMap.values());
+        return repository2.getAll();
     }
 
     @Override

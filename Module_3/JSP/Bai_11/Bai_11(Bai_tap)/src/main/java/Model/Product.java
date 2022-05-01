@@ -3,11 +3,11 @@ package Model;
 public class Product {
     private int id;
     private String name;
-    private float price;
+    private double price;
     private int quantity;
     private String manufacturer;
 
-    public Product(int id, String name, float price, int quantity, String manufacturer) {
+    public Product(int id, String name, double price, int quantity, String manufacturer) {
         this.id = id;
         this.name = name;
         this.price = price;
