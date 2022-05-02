@@ -16,11 +16,12 @@ public class RepositoryUserImpl implements RepositoryUser{
     private static final String CREATE_USER = "insert into user(name, email, country) values(?,?,?)";
     private static final String UPDATE_USER = "update user set name=?,email=?,country=? where id=?;";
     private static final String DELETE_USER = "delete from user where id=?";
-    private static final String FIND_BY_NAME_USER = "select * from user where name like %?%";
+    private static final String FIND_BY_COUNTRY_USER = "select * from user where country like '%?%'";
+    private static final String SORT_BY_NAME="select * from user order by name ?";
     @Override
     public List<User> getAll() {
         List<User> list = new ArrayList<>();
-        connection = ConnectionDB.getAll();
+        connection = ConnectionDB.getConnection();
         ResultSet resultSet = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL);
@@ -40,7 +41,7 @@ public class RepositoryUserImpl implements RepositoryUser{
 
     @Override
     public void create(User user) {
-        connection = ConnectionDB.getAll();
+        connection = ConnectionDB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER);
             preparedStatement.setString(1,user.getName());
@@ -59,7 +60,7 @@ public class RepositoryUserImpl implements RepositoryUser{
 
     @Override
     public void delete(int id) {
-        connection = ConnectionDB.getAll();
+        connection = ConnectionDB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER);
             preparedStatement.setInt(1,id);
@@ -71,7 +72,7 @@ public class RepositoryUserImpl implements RepositoryUser{
 
     @Override
     public void update(User user) {
-        connection = ConnectionDB.getAll();
+        connection = ConnectionDB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER);
             preparedStatement.setString(1,user.getName());
@@ -86,23 +87,42 @@ public class RepositoryUserImpl implements RepositoryUser{
     }
 
     @Override
-    public List<User> findByName(String name) {
-        connection = ConnectionDB.getAll();
+    public List<User> findByCountry(String country) {
+        connection = ConnectionDB.getConnection();
         ResultSet resultSet = null;
         List<User> list = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_NAME_USER);
-            preparedStatement.setString(1,name);
-            preparedStatement.executeUpdate();
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_COUNTRY_USER.replace("?", country));
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 int id = resultSet.getInt("id");
-                String name1 = resultSet.getString("name");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String country1 = resultSet.getString("country");
+                list.add(new User(id,name,email,country1));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public List<User> sort(String sortStyle) {
+        List<User> list = new ArrayList<>();
+        connection=ConnectionDB.getConnection();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet=null;
+        try {
+            preparedStatement = connection.prepareStatement(SORT_BY_NAME.replace("?", sortStyle));
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
                 String country = resultSet.getString("country");
-                list.add(new User(id,name1,email,country));
+                list.add(new User(id,name,email,country));
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

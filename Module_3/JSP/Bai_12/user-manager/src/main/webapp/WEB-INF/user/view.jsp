@@ -68,7 +68,9 @@
     <table class = "table table-dark table-hover">
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th><a href="${pageContext.request.contextPath}/user?action=sort&sortStyle=${sortStyle}" style="color: aliceblue">
+                Name
+            </a></th>
             <th>Email</th>
             <th>Country</th>
             <th></th>

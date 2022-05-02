@@ -9,5 +9,6 @@ public interface RepositoryUser {
     void create(User user);
     void delete(int id);
     void update(User user);
-    List<User> findByName(String name);
+    List<User> findByCountry(String country);
+    List<User> sort(String sortStyle);
 }

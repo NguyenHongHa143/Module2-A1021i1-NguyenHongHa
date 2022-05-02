@@ -8,7 +8,7 @@ public class ConnectionDB {
     private static String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
     private static String jdbcUsername = "hongha";
     private static String jdbcPassword = "12456";
-    public static Connection getAll(){
+    public static Connection getConnection(){
         Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -21,7 +21,7 @@ public class ConnectionDB {
     }
 
     public static void main(String[] args) {
-        Connection connection = getAll();
+        Connection connection = getConnection();
         if (connection !=null){
             System.out.println("hello");
         }

@@ -33,6 +33,9 @@ public class ServletUser extends HttpServlet {
             case "findByName":
                 showFindByName(request, response);
                 break;
+            case "sort":
+                showSort(request,response);
+                break;
             case "view":
             default:
                 showList(request, response);
@@ -63,9 +66,24 @@ public class ServletUser extends HttpServlet {
     private void showFindByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<User> list = new ArrayList<>();
         String name = request.getParameter("name");
-        list =  serviceUser.findByName(name);
+        list =  serviceUser.findByCountry(name);
         request.setAttribute("list",list);
         request.getRequestDispatcher("/WEB-INF/user/search.jsp").forward(request,response);
+    }
+    private void showSort(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String sortStyle = request.getParameter("sortStyle");
+        String tmp=null;
+        List<User> list = serviceUser.sort(sortStyle);
+        request.setAttribute("list",list);
+        if (sortStyle==null){
+            tmp = "asc";
+        }else if (sortStyle.equals("asc")){
+            tmp = "desc";
+        }else {
+            tmp = "asc";
+        }
+        request.setAttribute("sortStyle",tmp);
+        request.getRequestDispatcher("/WEB-INF/user/view.jsp").forward(request,response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

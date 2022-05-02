@@ -29,7 +29,12 @@ public class ServiceUserImpl implements ServiceUser{
     }
 
     @Override
-    public List<User> findByName(String name) {
-        return repositoryUser.findByName(name);
+    public List<User> findByCountry(String country) {
+        return repositoryUser.findByCountry(country);
+    }
+
+    @Override
+    public List<User> sort(String sortStyle) {
+        return repositoryUser.sort(sortStyle);
     }
 }
