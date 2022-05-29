@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head" >
+</head>
+<body>
+<div class="container">
+    <nav th:replace="layout :: nav"></nav>
+    <a href="#" th:href="@{/create}" class="btn btn-secondary btn-lg " tabindex="-1" role="button" >Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Describe</th>
+                <th>Manufacturer</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product,index : ${products}">
+                <td th:text="${index.count}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.describe}"></td>
+                <td th:text="${product.manufacturer}"></td>
+                <td>
+                    <a th:href="@{/update(id = ${product.id})}" th:text="Update"></a>
+                    <a th:href="@{/delete(id = ${product.id})}" th:text="Delete"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <footer th:replace="layout :: footer"></footer>
+</div>
+</body>
+</html>
