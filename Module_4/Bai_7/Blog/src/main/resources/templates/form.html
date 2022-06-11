@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+
+</head>
+<body>
+    <header>
+        <nav th:replace="index :: nav">
+        </nav>
+    </header>
+    <div class="container">
+        <a href="/" class="btn btn-primary btn-lg" tabindex="-1" role="button" >Back</a>
+        <form th:action="@{/save}" th:object="${blog}" method="post">
+            <div class="mb-3">
+                <input  type="hidden" name="id" th:field="*{id}" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" >Title Blog </label>
+                <input   class="form-control" id="exampleFormControlInput1" th:field="*{title}">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput2" class="form-label" >Image </label>
+                <input   class="form-control" id="exampleFormControlInput2" th:field="*{imageUrl}">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Content Blog</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{content}"></textarea>
+            </div>
+            <div class="mb-3">
+                <input type="hidden" name="likes" th:field="*{likes}" >
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Confirm</button>
+        </form>
+    </div>
+</body>
+</html>

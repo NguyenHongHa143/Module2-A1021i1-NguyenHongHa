@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/plugins/themify/css/themify-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg  py-4" id="navbar" th:fragment="nav">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="/images/blog/Blog_logo1.png" height="100px" width="100px" id="logo_1">
+                </a>
+
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa fa-bars"></span>
+                </button>
+
+                <div class="collapse navbar-collapse text-center" id="navbarsExample09">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="service.html">Blog</a></li>
+                    </ul>
+
+                    <form class="form-lg-inline my-2 my-md-0 ml-lg-4 text-center">
+                        <a href="create" class="btn btn-solid-border btn-round-full">Create Blog</a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="section blog-wrap bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-5" th:each="blog : ${blogs}">
+                    <div class="blog-item">
+                        <img th:src="'images/blog/'+${blog.imageUrl}" alt="" class="img-fluid rounded size_blog">
+
+                        <div class="blog-item-content bg-white p-5">
+                            <div class="blog-item-meta bg-gray py-1 px-2">
+                                <span class="text-muted text-capitalize mr-3"><i class="ti-pencil-alt mr-2"></i><a href="#">Edit</a></span>
+                                <span class="text-muted text-capitalize mr-3"><i class="ti-flag-alt mr-2"></i><a th:text="${blog.category.categoryName}" href="#"></a></span>
+                                <span class="text-black text-capitalize mr-3"><i class="ti-time mr-1"></i><span th:text="${blog.stringDate()}"></span></span>
+                                <span class="text-black text-capitalize mr-3"><button  type="button" class="button_delete" data-bs-toggle="modal" data-bs-target="#exampleModal" th:data-title="${blog.title}" th:data-id="${blog.id}"><i class="ti-trash mr-1"></i></button></span>
+                            </div>
+
+                            <h3 class="mt-3 mb-3"><a th:href="@{single(id = ${blog.id})}" th:text="${blog.title}"></a></h3>
+                            <p class="mb-4" th:text = "${blog.content}"></p>
+
+                            <a th:href="@{single(id = ${blog.id})}" class="btn btn-small btn-main btn-round-full">Learn More</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="align-content: center">
+            <a th:href="@{/(page=${blogs.number - 1})}" th:if="${blogs.hasPrevious()}">Previous</a>
+            <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}"></span>
+            <a th:href="@{/(page=${blogs.number + 1})}" th:if="${blogs.hasNext()}">Next</a>
+        </div>
+    </section>
+    <footer></footer>
+
+<!--Modal Delete-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn xoá bài blog này!!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/delete}" method="get">
+                        <div class="mb-3">
+                            <label  class="col-form-label"><h3>Title</h3></label>
+                            <p id="data-title"></p>
+                            <input type="hiden" th:name="id" th:id="data-id">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var exampleModal = document.getElementById('exampleModal')
+        exampleModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            // If necessary, you could initiate an AJAX request here
+            // and then do the updating in a callback.
+            //
+            // Update the modal's content.
+            exampleModal.querySelector('#data-title').innerHTML = button.getAttribute('data-title')
+            exampleModal.querySelector('#data-id').value = button.getAttribute('data-id')
+
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
